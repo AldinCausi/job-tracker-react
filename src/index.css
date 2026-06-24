@@ -1,0 +1,23 @@
+:root {
+    --bg-body: #f1f5f9;
+    --txt-color: #1a1a3e;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+html, body {
+    height: 100%;
+    font-family: "Inter", sans-serif;
+    background-color: var(--bg-body);
+    color: var(--txt-color);
+}
+
+#root {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}

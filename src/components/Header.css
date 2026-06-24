@@ -1,0 +1,39 @@
+:root {
+    --bg: #1a1a2e;
+    --logo-col: #ffffff;
+    --link-col: #a0aec0;
+}
+
+.header {
+    height: 64px;
+    flex-shrink: 0;
+    background-color: var(--bg);
+    padding: 0 32px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header-logo {
+    color: var(--logo-col);
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.header-nav {
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+}
+
+.header-nav a {
+    color: var(--link-col);
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.header-nav a:hover {
+  color: #ffffff;
+}
