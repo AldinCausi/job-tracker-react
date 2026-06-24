@@ -16,6 +16,7 @@ cursor.execute("""CREATE TABLE IF NOT EXISTS bewerbungen (
                status TEXT)""")
 
 
+
 class JobModel(BaseModel):
     id: int
     company: str
@@ -56,6 +57,19 @@ def get_all_jobs():
         for row in jobs
     ]
 
+@app.get("/jobs/{job_id}")
+def get_job_by_id(job: JobModel, job_id: int):
+    cursor.execute("SELECT * FROM bewerbungen WHERE id = ?", (job_id, ))
+    job = cursor.fetchall()
+    return {
+        "message": f"job with id={job_id} returned",
+        "job": {
+            "company": job.company,
+            "role": job.role,
+            "status": job.status
+        }
+    }
+
 @app.post("/jobs")
 def create_job_application(job: CreaeJobModel):
     cursor.execute(
@@ -69,6 +83,13 @@ def create_job_application(job: CreaeJobModel):
                 "role": job.role,
                 "status": job.status
             }}
+
+@app.delete("/jobs/{job_id}")
+def delete_job(job_id: int):
+    cursor.execute("DELETE FROM bewerbungen WHERE id = ?", (job_id, ))
+    conn.commit()
+    return {"message": f"job with id={job_id} deleted."}
+
 
 
 
